@@ -42,7 +42,7 @@ app.get('/search/searchbyleadsourcename/:sourceName', (req, res) => {
   let term = 'shubhloans';
   searchData.forEach((item) => {
     item.loans.forEach((loanItem) => {
-      if (loanItem.leadSourceName.toLowerCase() === term) {
+      if (loanItem.leadSourceName.toLowerCase() === sourceName.toLowerCase()) {
         output = [...output, item];
       }
     });
@@ -70,6 +70,7 @@ app.get('/search/searchbyloanamount/:loanAmount', (req, res) => {
 
 app.get('/search/searchbydisbursaldate/:disbursalDate', (req, res) => {
   let disbursalDate = req.params.disbursalDate;
+  console.log('dbdt', disbursalDate);
   let output = [];
   searchData.forEach((item) => {
     item.loans.forEach((loanItem) => {

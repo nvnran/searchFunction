@@ -57,6 +57,12 @@ router.post('/anything', (req, res) => {
   let source = searchItem.trim();
   let type = isNaN(source);
   let notDate = isNaN(Date.parse(source));
+  let momLongDate = isNaN(
+    Date.parse(moment(source, 'Do MMMM YYYY').format('YYYY-MM-DD'))
+  );
+  if (momLongDate === false) {
+    notDate = false;
+  }
 
   if (type) {
     if (notDate) {
@@ -64,13 +70,20 @@ router.post('/anything', (req, res) => {
         res.redirect(`/search/searchbyleadsource/${searchItem}`);
       } else if (source.toLowerCase() === 'shubhloans') {
         res.redirect(`/search/searchbyleadsourcename/${searchItem}`);
+      } else if (source.toLowerCase() === 'samsung') {
+        res.redirect(`/search/searchbyleadsourcename/${searchItem}`);
       } else if (months.includes(source.toLowerCase())) {
         res.redirect(`/search/searchbymonth/${searchItem}`);
       } else {
         res.redirect(`/search/notfound/${searchItem}`);
       }
     } else {
-      res.redirect(`/search/searchbydisbursaldate/${searchItem}`);
+      if (momLongDate === false) {
+        let dt = moment(source, 'Do MMMM YYYY').format('YYYY-MM-DD');
+        res.redirect(`/search/searchbydisbursaldate/${dt}`);
+      } else {
+        res.redirect(`/search/searchbydisbursaldate/${searchItem}`);
+      }
     }
   } else {
     if (source.length > 4) {
