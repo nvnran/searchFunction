@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Search Function</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Loan Details</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <section>
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-10">
+            <form action="/search/anything" method="POST">
+              <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="zmdi zmdi-search"></i>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="searchCriteria"
+                  name="searchCriteria"
+                  placeholder="Search Criteria"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="row">
+          <% output.forEach(detail => { %>
+          <div class="col-6 loanDetContainer">
+            <% detail.loans.forEach(loan => { %>
+            <div class="card">
+              <div class="cardTitle">
+                <h5 class="card-title">Loan Details</h5>
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <div class="row mt-2">
+                    <div class="col-6">Lead Source</div>
+                    <div class="col-6"><%= loan.leadSource %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Lead Id</div>
+                    <div class="col-6"><%= loan.id %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Loan Amount</div>
+                    <div class="col-6">₹ <%= loan.totalLoanAmount %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">EMI Amount</div>
+                    <div class="col-6">₹ <%= loan.emiAmount %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Loan Created Date</div>
+                    <div class="col-6"><%= loan.createdDate %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Disbursal Date</div>
+                    <div class="col-6"><%= loan.disbursalDate %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Next Installment Payment</div>
+                    <div class="col-6">
+                      <% loan.upcomingEMIDates.forEach((dates) => { %>
+                      <div class="row">
+                        <div class="col-12"><%= dates.date %></div>
+                      </div>
+                      <% }) %>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Stage</div>
+                    <div class="col-6"><%= loan.stageName %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Interest Rate</div>
+                    <div class="col-6"><%= loan.interestRate %> %</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Source</div>
+                    <div class="col-6" style="text-transform: uppercase">
+                      <%= loan.leadSourceName %>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Maturity</div>
+                    <div class="col-6"><%= loan.maturityDate %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Name</div>
+                    <div class="col-6"><%= loan.name %></div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Current Face</div>
+                    <div class="col-6">₹ <%= loan.currentFace %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

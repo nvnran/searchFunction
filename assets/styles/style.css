@@ -1,0 +1,30 @@
+body {
+  font-size: 13px;
+}
+.navbar {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+section {
+  margin-top: 60px;
+}
+#searchCriteria:focus {
+  outline: none;
+}
+
+.form-control:focus {
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+.cardTitle {
+  background-color: #f8f9fa !important;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loanDetContainer {
+  margin-bottom: 20px;
+}
