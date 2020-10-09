@@ -25,10 +25,13 @@ router.post('/searchRouter', (req, res) => {
       res.redirect(`/search/searchbymaturitydate/${searchQuery}`);
       break;
     case 'emiAmount':
-      console.log(searchQuery, 'emiAmount');
+      res.redirect(`/search/searchbyemi/${searchQuery}`);
+      break;
+    case 'currentFace':
+      res.redirect(`/search/searchbycurrentFace/${searchQuery}`);
       break;
     default:
-      return;
+      res.redirect(`/search/invalidsearchtype/${searchQuery}`);
       break;
   }
 });

@@ -15,6 +15,7 @@
     />
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
+
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -80,6 +81,7 @@
                       id="searchCriteria"
                       name="searchCriteria"
                       placeholder="Search Criteria"
+                      value="<%= term %>"
                     />
                   </div>
                 </div>
@@ -100,82 +102,8 @@
     </section>
     <section>
       <div class="container">
-        <div class="row">
-          <% output.forEach(detail => { %>
-          <div class="col-6 loanDetContainer">
-            <% detail.loans.forEach(loan => { %>
-            <div class="card">
-              <div class="cardTitle">
-                <h5 class="card-title">Loan Details</h5>
-              </div>
-              <div class="card-body">
-                <div class="card-text">
-                  <div class="row mt-2">
-                    <div class="col-6">Lead Source</div>
-                    <div class="col-6"><%= loan.leadSource %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Lead Id</div>
-                    <div class="col-6"><%= loan.id %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Loan Amount</div>
-                    <div class="col-6">₹ <%= loan.totalLoanAmount %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">EMI Amount</div>
-                    <div class="col-6">₹ <%= loan.emiAmount %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Loan Created Date</div>
-                    <div class="col-6"><%= loan.createdDate %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Disbursal Date</div>
-                    <div class="col-6"><%= loan.disbursalDate %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Next Installment Payment</div>
-                    <div class="col-6">
-                      <% loan.upcomingEMIDates.forEach((dates) => { %>
-                      <div class="row">
-                        <div class="col-12"><%= dates.date %></div>
-                      </div>
-                      <% }) %>
-                    </div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Stage</div>
-                    <div class="col-6"><%= loan.stageName %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Interest Rate</div>
-                    <div class="col-6"><%= loan.interestRate %> %</div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Source</div>
-                    <div class="col-6" style="text-transform: uppercase">
-                      <%= loan.leadSourceName %>
-                    </div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Maturity</div>
-                    <div class="col-6"><%= loan.maturityDate %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Name</div>
-                    <div class="col-6"><%= loan.name %></div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-6">Current Face</div>
-                    <div class="col-6">₹ <%= loan.currentFace %></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% }) %>
-          </div>
-          <% }) %>
+        <div class="row justify-content-around">
+          <h5>Sorry!! Please choose a search type and try again!</h5>
         </div>
       </div>
     </section>

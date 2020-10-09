@@ -108,6 +108,7 @@ app.get('/search/searchbydisbursaldate/:disbursalDate', (req, res) => {
     );
   } else {
     date = moment(disbursalDate).format('YYYY-MM-DD');
+    console.log(date);
   }
   searchData.forEach((item) => {
     item.loans.forEach((loanItem) => {
@@ -227,14 +228,15 @@ app.get('/search/searchbyemi/:emiAmount', (req, res) => {
   });
 });
 
-app.get('/search/searchbymonth/:month', (req, res) => {
-  let month = req.params.month;
+app.get('/search/searchbycurrentFace/:currentFace', (req, res) => {
+  let currentFace = req.params.currentFace;
   let output = [];
+  console.log(currentFace);
   searchData.forEach((item) => {
     item.loans.forEach((loanItem) => {
       if (
-        moment(loanItem.disbursalDate).format('MMM').toLowerCase() ==
-        month.toLowerCase()
+        Math.ceil(loanItem.currentFace / 100) * 100 ==
+        Math.ceil(currentFace / 100) * 100
       ) {
         output = [...output, item];
       }
@@ -249,6 +251,13 @@ app.get('/search/notfound/:searchItem', (req, res) => {
   let searchItem = req.params.searchItem;
   res.render('search/notfound', {
     details: searchItem,
+  });
+});
+
+app.get('/search/invalidsearchtype/:searchItem', (req, res) => {
+  let searchItem = req.params.searchItem;
+  res.render('search/invalidsearchtype', {
+    term: searchItem,
   });
 });
 
