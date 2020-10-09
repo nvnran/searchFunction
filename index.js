@@ -21,13 +21,15 @@ app.get('/', (req, res) => {
 app.use('/search', searchRouter);
 
 app.post('/search/searchquery', (req, res) => {
-  let filtered = filter(
+  let output = filter(
     searchData,
     req.body.searchType,
     req.body.searchCriteria.trim(),
     req.body.parameters
   );
-  console.log(filtered);
+  res.render('search/output', {
+    output: output,
+  });
 });
 
 app.listen(5000);
