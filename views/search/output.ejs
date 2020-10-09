@@ -102,7 +102,7 @@
     <section>
       <div class="container">
         <div class="row">
-          <% output.forEach(detail => { %>
+          <% if (output.length > 0 ){ output.forEach(detail => { %>
           <div class="col-6 loanDetContainer">
             <% detail.loans.forEach(loan => { %>
             <div class="card">
@@ -176,7 +176,20 @@
             </div>
             <% }) %>
           </div>
-          <% }) %>
+          <% }) } else { %>
+          <div class="col-12 loanDetContainer">
+            <div class="card">
+              <div class="cardTitle">
+                <h5 class="card-title">Sorry!</h5>
+              </div>
+              <div class="card-body">
+                <div class="card-text" style="text-align: center">
+                  <p>No Results Found.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
         </div>
       </div>
     </section>

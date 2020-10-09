@@ -46,7 +46,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <form action="/search/searchRouter" method="POST">
+            <form action="/search/searchquery" method="POST">
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
@@ -55,7 +55,7 @@
                       id="searchType"
                       name="searchType"
                     >
-                      <option value="">-- Search By --</option>
+                      <option value="">Search By...</option>
                       <option value="leadSource">Lead Source</option>
                       <option value="name">Loan Name</option>
                       <option value="disbursalDate">Disbursal Date</option>
@@ -91,6 +91,19 @@
                   >
                     Search
                   </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <select
+                    class="form-control"
+                    id="parameters"
+                    name="parameters"
+                  >
+                    <option value="">Optional Parameters</option>
+                    <option value="rounded">Rounded</option>
+                    <option value="approximate">Approximate</option>
+                  </select>
                 </div>
               </div>
             </form>
@@ -183,5 +196,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>
