@@ -5,7 +5,34 @@ const moment = require('moment');
 const searchRouter = require('./routes/search');
 const searchData = require('./data/searchData');
 const dataGenerator = require('./data/dataGenerator');
+const { format } = require('path');
 const app = express();
+
+const months = [
+  'jan',
+  'feb',
+  'mar',
+  'apr',
+  'may',
+  'jun',
+  'jul',
+  'aug',
+  'sep',
+  'oct',
+  'nov',
+  'dec',
+  'january',
+  'february',
+  'march',
+  'april',
+  'june',
+  'july',
+  'august',
+  'september',
+  'october',
+  'november',
+  'december',
+];
 
 app.use(express.static(path.join(__dirname, 'assets')));
 
@@ -24,25 +51,67 @@ app.use('/search', searchRouter);
 app.get('/search/searchbyleadsource/:leadSource', (req, res) => {
   let leadSource = req.params.leadSource;
   let output = [];
-  searchData.forEach((item) => {
-    item.loans.forEach((loanItem) => {
-      if (loanItem.leadSource === leadSource || loanItem.id === leadSource) {
-        output = [...output, item];
-      }
+  if (leadSource.length === 18) {
+    searchData.forEach((item) => {
+      item.loans.forEach((loanItem) => {
+        if (loanItem.leadSource === leadSource) {
+          output = [...output, item];
+        }
+      });
     });
-  });
+  } else if (leadSource.length === 4) {
+    searchData.forEach((item) => {
+      item.loans.forEach((loanItem) => {
+        if (loanItem.leadSource.substring(14, 18) === leadSource) {
+          output = [...output, item];
+        }
+      });
+    });
+  }
   res.render('search/output', {
     output: output,
   });
 });
 
-app.get('/search/searchbyleadsourcename/:sourceName', (req, res) => {
-  let sourceName = req.params.sourceName;
+app.get('/search/searchbyloanname/:name', (req, res) => {
+  let name = req.params.name;
   let output = [];
-  let term = 'shubhloans';
+  if (name.length === 13) {
+    searchData.forEach((item) => {
+      item.loans.forEach((loanItem) => {
+        if (loanItem.name === name) {
+          output = [...output, item];
+        }
+      });
+    });
+  } else if (name.length === 4) {
+    searchData.forEach((item) => {
+      item.loans.forEach((loanItem) => {
+        if (loanItem.name.substring(9, 13) === name) {
+          output = [...output, item];
+        }
+      });
+    });
+  }
+  res.render('search/output', {
+    output: output,
+  });
+});
+
+app.get('/search/searchbydisbursaldate/:disbursalDate', (req, res) => {
+  let disbursalDate = Date.parse(req.params.disbursalDate);
+  let date = '';
+  let output = [];
+  if (isNaN(disbursalDate)) {
+    date = moment(req.params.disbursalDate, 'Do MMMM YYYY').format(
+      'YYYY-MM-DD'
+    );
+  } else {
+    date = moment(disbursalDate).format('YYYY-MM-DD');
+  }
   searchData.forEach((item) => {
     item.loans.forEach((loanItem) => {
-      if (loanItem.leadSourceName.toLowerCase() === sourceName.toLowerCase()) {
+      if (loanItem.disbursalDate === date) {
         output = [...output, item];
       }
     });
@@ -57,24 +126,52 @@ app.get('/search/searchbyloanamount/:loanAmount', (req, res) => {
   let output = [];
   searchData.forEach((item) => {
     item.loans.forEach((loanItem) => {
-      if (loanItem.totalLoanAmount === loanAmount) {
+      if (loanItem.totalLoanAmount == loanAmount) {
         output = [...output, item];
       }
     });
   });
-
   res.render('search/output', {
     output: output,
   });
 });
 
-app.get('/search/searchbydisbursaldate/:disbursalDate', (req, res) => {
-  let disbursalDate = req.params.disbursalDate;
-  console.log('dbdt', disbursalDate);
+app.get('/search/searchbyleadsourcename/:sourceName', (req, res) => {
+  let sourceName = req.params.sourceName;
   let output = [];
   searchData.forEach((item) => {
     item.loans.forEach((loanItem) => {
-      if (loanItem.disbursalDate === disbursalDate) {
+      if (loanItem.leadSourceName.toLowerCase() === sourceName.toLowerCase()) {
+        output = [...output, item];
+      }
+    });
+  });
+  res.render('search/output', {
+    output: output,
+  });
+});
+
+app.get('/search/searchbymaturitydate/:maturityDate', (req, res) => {
+  let maturityDate = Date.parse(req.params.maturityDate);
+  let date = '';
+  let output = [];
+  if (months.includes(req.params.maturityDate)) {
+    searchData.forEach((item) => {
+      item.loans.forEach((loanItem) => {
+        if (loanItem.maturityDate === date) {
+          output = [...output, item];
+        }
+      });
+    });
+  }
+  if (isNaN(maturityDate)) {
+    date = moment(req.params.maturityDate, 'Do MMMM YYYY').format('YYYY-MM-DD');
+  } else {
+    date = moment(maturityDate).format('YYYY-MM-DD');
+  }
+  searchData.forEach((item) => {
+    item.loans.forEach((loanItem) => {
+      if (loanItem.maturityDate === date) {
         output = [...output, item];
       }
     });

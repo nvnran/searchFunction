@@ -660,7 +660,7 @@ const searchData = [
           },
         ],
         totalLoanAmount: 139200,
-        leadSourceName: 'Samsung',
+        leadSourceName: 'Tata',
         maturityDate: '2021-07-05',
         name: 'DMI0000392395',
         currentFace: 3158,

@@ -45,22 +45,40 @@
     </div>
     <section>
       <div class="container">
-        <div class="row justify-content-around">
-          <div class="col-10">
-            <form action="/search/anything" method="POST">
-              <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="zmdi zmdi-search"></i>
+        <div class="row">
+          <div class="col-md-12">
+            <form action="/search/searchRouter" method="POST">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <select class="form-control" id="searchType" name="searchType">
+                      <option value="">-- Search By --</option>
+                      <option value="leadSource">Lead Source</option>
+                      <option value="name">Loan Name</option>
+                      <option value="disbursalDate">Disbursal Date</option>
+                      <option value="totalLoanAmount">Loan Amount</option>
+                      <option value="leadSourceName">Lead Source Name</option>
+                      <option value="maturityDate">Maturity Date</option>
+                      <option value="emiAmount">EMI Amount</option>
+                    </select>
                   </div>
                 </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="searchCriteria"
-                  name="searchCriteria"
-                  placeholder="Search Criteria"
-                />
+                <div class="col-6">
+                  <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="zmdi zmdi-search"></i>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="searchCriteria" name="searchCriteria"
+                      placeholder="Search Criteria" />
+                  </div>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-outline-primary" type="submit" id="btn-search">
+                    Search
+                  </button>
+                </div>
               </div>
             </form>
           </div>
