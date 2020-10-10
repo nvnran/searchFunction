@@ -32,7 +32,7 @@ app.post('/search/searchquery', (req, res) => {
     data = JSON.parse(req.body.loanResponse);
   }
   let output = filter(
-    searchData,
+    data,
     req.body.searchType,
     req.body.searchCriteria.trim(),
     req.body.parameters
