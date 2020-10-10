@@ -30,7 +30,7 @@ $('#testForm').on('submit', (e) => {
   let searchCriteria = testForm['searchCriteria'].value;
   let parameters = testForm['parameters'].value;
   let data = {
-    loanResponse,
+    loanResponse: JSON.stringify(loanResponse),
     searchType,
     searchCriteria,
     parameters,
@@ -40,33 +40,9 @@ $('#testForm').on('submit', (e) => {
     url: '/search/searchquery',
     type: 'POST',
     dataType: 'json',
-    data: JSON.stringify(data),
+    data: data,
     success: function (res) {
       console.log(res);
     },
   });
 });
-
-// let testForm = document.querySelector('#testForm');
-
-// testForm.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   let loanResponse = searchArray;
-//   let searchType = testForm['searchType'].value;
-//   let searchCriteria = testForm['searchCriteria'].value;
-//   let parameters = testForm['parameters'].value;
-//   let data = {
-//     loanResponse,
-//     searchType,
-//     searchCriteria,
-//     parameters,
-//   };
-//   const output = async () => {
-//     let result = await axios
-//       .get('https://jsonplaceholder.typicode.com/users')
-//       .then((res) => {
-//         console.log(res);
-//       });
-//     return result;
-//   };
-// });

@@ -18,9 +18,19 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/test', (req, res) => {
+  res.render('search/test');
+});
+
 app.use('/search', searchRouter);
 
 app.post('/search/searchquery', (req, res) => {
+  let data;
+  if (!req.body.loanResponse) {
+    data = searchData;
+  } else {
+    data = JSON.parse(req.body.loanResponse);
+  }
   let output = filter(
     searchData,
     req.body.searchType,

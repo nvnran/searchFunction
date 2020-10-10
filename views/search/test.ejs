@@ -15,7 +15,6 @@
     />
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
-
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,7 +30,6 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -52,7 +50,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <form action="/search/searchquery" method="POST">
+            <form id="testForm">
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
@@ -119,14 +117,85 @@
     </section>
     <section>
       <div class="container">
-        <div class="row justify-content-around">
-          <h5>Sorry!! Please choose a search type and try again!</h5>
+        <div class="row">
+          <div class="col-6 loanDetContainer">
+            <div class="card">
+              <div class="cardTitle">
+                <h5 class="card-title">Loan Details</h5>
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <div class="row mt-2">
+                    <div class="col-6">Lead Source</div>
+                    <div class="col-6">a0d9000000OukoNAAR</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Lead Id</div>
+                    <div class="col-6">0069000000yAJJ8AAO</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Loan Amount</div>
+                    <div class="col-6">₹ 50000</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">EMI Amount</div>
+                    <div class="col-6">₹ 2744</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Loan Created Date</div>
+                    <div class="col-6">2017-12-11T09:04:50.000+0000</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Disbursal Date</div>
+                    <div class="col-6">2017-12-12</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Next Installment Payment</div>
+                    <div class="col-6">
+                      <div class="row">
+                        <div class="col-12">2019-12-05</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Stage</div>
+                    <div class="col-6">Current</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Interest Rate</div>
+                    <div class="col-6">28 %</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Source</div>
+                    <div class="col-6" style="text-transform: uppercase">
+                      Shubhloans
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Maturity</div>
+                    <div class="col-6">2019-12-05</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Name</div>
+                    <div class="col-6">DMI0000311015</div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">Current Face</div>
+                    <div class="col-6">₹ 2695</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/test.js"></script>
   </body>
 </html>
