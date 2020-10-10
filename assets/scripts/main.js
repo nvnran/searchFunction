@@ -33,4 +33,3 @@ document.querySelector('#searchType').addEventListener('change', (e) => {
       break;
   }
 });
-console.log('done');

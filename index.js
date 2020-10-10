@@ -3,7 +3,7 @@ const path = require('path');
 const searchRouter = require('./routes/search');
 const dataGenerator = require('./data/dataGenerator');
 const searchData = require('./data/searchData');
-const filter = require('./components/filter');
+const filter = require('./components/filterHelper');
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'assets')));
