@@ -29,7 +29,7 @@ app.post('/search/searchquery', (req, res) => {
   if (!req.body.loanResponse) {
     data = searchData;
   } else {
-    data = JSON.parse(req.body.loanResponse);
+    data = [JSON.parse(req.body.loanResponse)];
   }
   let output = filter(
     data,
@@ -40,6 +40,7 @@ app.post('/search/searchquery', (req, res) => {
   res.render('search/output', {
     output: output,
   });
+  console.log(output);
 });
 
 app.listen(5000);

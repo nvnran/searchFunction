@@ -1,7 +1,6 @@
 const moment = require('moment');
 
 const filter = (array, field, query, param) => {
-  console.log(field, query);
   let output = [];
   if (!param) {
     array.forEach((arrayItem) => {
