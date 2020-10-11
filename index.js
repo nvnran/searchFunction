@@ -40,7 +40,6 @@ app.post('/search/searchquery', (req, res) => {
   res.render('search/output', {
     output: output,
   });
-  console.log(output);
 });
 
 app.listen(5000);
