@@ -35,6 +35,6 @@ In order to call the API Endpoint, any frontend technology can be used. The API 
 | Data                | JSON Array of objects |
 | Search Type         | String                |
 | Search Term         | String                |
-| OPtional Parameters | String                |
+| Optional Parameters | String                |
 
 Output is in the form of JSON Array of Objects
