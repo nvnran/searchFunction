@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "app": "nodemon index.js"
   },
   "author": "Naveen R",
   "license": "ISC",
