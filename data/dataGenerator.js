@@ -1,3 +1,5 @@
+// The Hardcoded Data in searchData.js was created using this
+
 let faker = require('faker');
 let moment = require('moment');
 

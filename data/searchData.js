@@ -1,3 +1,4 @@
+// Currenlty Hardcoded Data
 const searchData = [
   {
     success: true,

@@ -12,18 +12,22 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: false }));
 
+// Renders Home Page
 app.get('/', (req, res) => {
   res.render('search/index', {
     output: searchData,
   });
 });
 
+// Absolutely Unnecessary but useful for testing
 app.get('/test', (req, res) => {
   res.render('search/test');
 });
 
+// Initializing Search Router
 app.use('/search', searchRouter);
 
+// Search API Endpoint
 app.post('/search/searchquery', (req, res) => {
   let data;
   if (!req.body.loanResponse) {
@@ -42,4 +46,5 @@ app.post('/search/searchquery', (req, res) => {
   });
 });
 
-app.listen(5000);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
